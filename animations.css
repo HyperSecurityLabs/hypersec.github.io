@@ -1,0 +1,1066 @@
+/* ============================================
+   HyperSecurity Offensive Labs - Animations and Effects
+   ============================================ */
+
+/* ============================================
+   Performance Optimizations
+   ============================================ */
+
+/* Enable GPU acceleration for animated elements */
+.glow-red,
+.glow-box,
+.hover-scale,
+.hover-scale-sm,
+.hover-scale-lg,
+.hover-glow-scale,
+.fade-in,
+.fade-in-up,
+.fade-in-down,
+.slide-in-left,
+.slide-in-right,
+.slide-in-up,
+.slide-in-down {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Optimize glow effects for performance */
+.glow-red,
+.glow-box {
+  will-change: text-shadow, box-shadow;
+}
+
+/* Remove will-change after animations complete */
+.fade-in,
+.fade-in-up,
+.fade-in-down,
+.slide-in-left,
+.slide-in-right,
+.slide-in-up,
+.slide-in-down {
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+/* Optimize hover transitions for 60fps */
+.feature-card,
+.tech-feature,
+.platform-feature,
+.protocol-category,
+.innovation-item,
+.contact-link,
+.cta-button,
+.nav-link {
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Use transform instead of position changes for better performance */
+@keyframes optimized-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: rotate(45deg) translateY(0) translateZ(0);
+    -webkit-transform: rotate(45deg) translateY(0) translateZ(0);
+  }
+  40% {
+    transform: rotate(45deg) translateY(10px) translateZ(0);
+    -webkit-transform: rotate(45deg) translateY(10px) translateZ(0);
+  }
+  60% {
+    transform: rotate(45deg) translateY(5px) translateZ(0);
+    -webkit-transform: rotate(45deg) translateY(5px) translateZ(0);
+  }
+}
+
+@-webkit-keyframes optimized-bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: rotate(45deg) translateY(0) translateZ(0);
+  }
+  40% {
+    -webkit-transform: rotate(45deg) translateY(10px) translateZ(0);
+  }
+  60% {
+    -webkit-transform: rotate(45deg) translateY(5px) translateZ(0);
+  }
+}
+
+.scroll-arrow {
+  animation: optimized-bounce 2s infinite;
+  -webkit-animation: optimized-bounce 2s infinite;
+}
+
+/* ============================================
+   Red Glow Effects
+   ============================================ */
+
+/* Text Glow Effects - For text elements, headings, and inline content */
+
+/* Base glow-red class - Medium intensity */
+.glow-red {
+  text-shadow: 
+    0 0 10px var(--color-primary-glow-soft),
+    0 0 20px var(--color-primary-glow-soft),
+    0 0 30px var(--color-primary-glow),
+    0 0 40px var(--color-primary);
+  transition: text-shadow var(--transition-base) var(--ease-out);
+}
+
+/* Glow intensity variations for text */
+.glow-red-subtle {
+  text-shadow: 
+    0 0 5px var(--color-primary-glow-subtle),
+    0 0 10px var(--color-primary-glow-subtle);
+  transition: text-shadow var(--transition-base) var(--ease-out);
+}
+
+.glow-red-soft {
+  text-shadow: 
+    0 0 8px var(--color-primary-glow-soft),
+    0 0 15px var(--color-primary-glow-soft),
+    0 0 20px var(--color-primary-glow-subtle);
+  transition: text-shadow var(--transition-base) var(--ease-out);
+}
+
+.glow-red-medium {
+  text-shadow: 
+    0 0 10px var(--color-primary-glow-soft),
+    0 0 20px var(--color-primary-glow-soft),
+    0 0 30px var(--color-primary-glow),
+    0 0 40px var(--color-primary);
+  transition: text-shadow var(--transition-base) var(--ease-out);
+}
+
+.glow-red-strong {
+  text-shadow: 
+    0 0 15px var(--color-primary-glow),
+    0 0 25px var(--color-primary-glow),
+    0 0 35px var(--color-primary),
+    0 0 45px var(--color-primary),
+    0 0 55px var(--color-primary-dark);
+  transition: text-shadow var(--transition-base) var(--ease-out);
+}
+
+.glow-red-intense {
+  text-shadow: 
+    0 0 20px var(--color-primary-glow),
+    0 0 30px var(--color-primary-glow),
+    0 0 40px var(--color-primary),
+    0 0 50px var(--color-primary),
+    0 0 60px var(--color-primary),
+    0 0 70px var(--color-primary-dark);
+  transition: text-shadow var(--transition-base) var(--ease-out);
+}
+
+/* Box Glow Effects - For containers, cards, buttons, and block elements */
+
+/* Base glow-box class - Medium intensity */
+.glow-box {
+  box-shadow:
+    0 0 10px var(--color-primary-glow-soft),
+    0 0 20px var(--color-primary-glow-soft),
+    0 0 30px rgba(255, 0, 0, 0.5),
+    inset 0 0 10px rgba(255, 0, 0, 0.1);
+  transition: box-shadow var(--transition-base) var(--ease-out);
+}
+
+/* Box glow intensity variations */
+.glow-box-subtle {
+  box-shadow:
+    0 0 5px var(--color-primary-glow-subtle),
+    0 0 10px var(--color-primary-glow-subtle),
+    inset 0 0 5px rgba(255, 0, 0, 0.05);
+  transition: box-shadow var(--transition-base) var(--ease-out);
+}
+
+.glow-box-soft {
+  box-shadow:
+    0 0 8px var(--color-primary-glow-soft),
+    0 0 15px var(--color-primary-glow-soft),
+    0 0 20px rgba(255, 0, 0, 0.3),
+    inset 0 0 8px rgba(255, 0, 0, 0.08);
+  transition: box-shadow var(--transition-base) var(--ease-out);
+}
+
+.glow-box-medium {
+  box-shadow:
+    0 0 10px var(--color-primary-glow-soft),
+    0 0 20px var(--color-primary-glow-soft),
+    0 0 30px rgba(255, 0, 0, 0.5),
+    inset 0 0 10px rgba(255, 0, 0, 0.1);
+  transition: box-shadow var(--transition-base) var(--ease-out);
+}
+
+.glow-box-strong {
+  box-shadow:
+    0 0 15px var(--color-primary-glow),
+    0 0 25px var(--color-primary-glow),
+    0 0 35px rgba(255, 0, 0, 0.6),
+    0 0 45px rgba(255, 0, 0, 0.4),
+    inset 0 0 15px rgba(255, 0, 0, 0.15);
+  transition: box-shadow var(--transition-base) var(--ease-out);
+}
+
+.glow-box-intense {
+  box-shadow:
+    0 0 20px var(--color-primary-glow),
+    0 0 30px var(--color-primary-glow),
+    0 0 40px var(--color-primary),
+    0 0 50px rgba(255, 0, 0, 0.7),
+    0 0 60px rgba(255, 0, 0, 0.5),
+    inset 0 0 20px rgba(255, 0, 0, 0.2);
+  transition: box-shadow var(--transition-base) var(--ease-out);
+}
+
+/* ============================================
+   Hover Effects
+   ============================================ */
+
+/* Hover state enhancements - Increase glow intensity on hover */
+.glow-red:hover,
+.glow-red-medium:hover {
+  text-shadow: 
+    0 0 15px var(--color-primary-glow),
+    0 0 25px var(--color-primary-glow),
+    0 0 35px var(--color-primary),
+    0 0 45px var(--color-primary),
+    0 0 55px var(--color-primary-dark);
+}
+
+.glow-red-subtle:hover {
+  text-shadow: 
+    0 0 8px var(--color-primary-glow-soft),
+    0 0 15px var(--color-primary-glow-soft),
+    0 0 20px var(--color-primary-glow-subtle);
+}
+
+.glow-red-soft:hover {
+  text-shadow: 
+    0 0 10px var(--color-primary-glow-soft),
+    0 0 20px var(--color-primary-glow-soft),
+    0 0 30px var(--color-primary-glow),
+    0 0 40px var(--color-primary);
+}
+
+.glow-red-strong:hover,
+.glow-red-intense:hover {
+  text-shadow: 
+    0 0 25px var(--color-primary-glow),
+    0 0 35px var(--color-primary-glow),
+    0 0 45px var(--color-primary),
+    0 0 55px var(--color-primary),
+    0 0 65px var(--color-primary),
+    0 0 75px var(--color-primary-dark),
+    0 0 85px var(--color-primary-dark);
+}
+
+.glow-box:hover,
+.glow-box-medium:hover {
+  box-shadow:
+    0 0 15px var(--color-primary-glow),
+    0 0 25px var(--color-primary-glow),
+    0 0 35px rgba(255, 0, 0, 0.6),
+    0 0 45px rgba(255, 0, 0, 0.4),
+    inset 0 0 15px rgba(255, 0, 0, 0.15);
+}
+
+.glow-box-subtle:hover {
+  box-shadow:
+    0 0 8px var(--color-primary-glow-soft),
+    0 0 15px var(--color-primary-glow-soft),
+    0 0 20px rgba(255, 0, 0, 0.3),
+    inset 0 0 8px rgba(255, 0, 0, 0.08);
+}
+
+.glow-box-soft:hover {
+  box-shadow:
+    0 0 10px var(--color-primary-glow-soft),
+    0 0 20px var(--color-primary-glow-soft),
+    0 0 30px rgba(255, 0, 0, 0.5),
+    inset 0 0 10px rgba(255, 0, 0, 0.1);
+}
+
+.glow-box-strong:hover,
+.glow-box-intense:hover {
+  box-shadow:
+    0 0 25px var(--color-primary-glow),
+    0 0 35px var(--color-primary-glow),
+    0 0 45px var(--color-primary),
+    0 0 55px rgba(255, 0, 0, 0.8),
+    0 0 65px rgba(255, 0, 0, 0.6),
+    0 0 75px rgba(255, 0, 0, 0.4),
+    inset 0 0 25px rgba(255, 0, 0, 0.25);
+}
+
+/* Scale Transformations for Interactive Elements */
+
+/* Subtle scale - For text links and small elements */
+.hover-scale-subtle {
+  transition: transform var(--transition-base) var(--ease-out);
+}
+
+.hover-scale-subtle:hover {
+  transform: scale(1.02);
+}
+
+/* Small scale - For buttons and medium elements */
+.hover-scale-sm {
+  transition: transform var(--transition-base) var(--ease-out);
+}
+
+.hover-scale-sm:hover {
+  transform: scale(1.05);
+}
+
+/* Medium scale - For cards and larger interactive elements */
+.hover-scale {
+  transition: transform var(--transition-base) var(--ease-out);
+}
+
+.hover-scale:hover {
+  transform: scale(1.08);
+}
+
+/* Large scale - For prominent call-to-action elements */
+.hover-scale-lg {
+  transition: transform var(--transition-base) var(--ease-out);
+}
+
+.hover-scale-lg:hover {
+  transform: scale(1.1);
+}
+
+/* Combined glow and scale effects */
+.hover-glow-scale {
+  transition: 
+    transform var(--transition-base) var(--ease-out),
+    box-shadow var(--transition-base) var(--ease-out);
+}
+
+.hover-glow-scale:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 0 15px var(--color-primary-glow),
+    0 0 25px var(--color-primary-glow),
+    0 0 35px rgba(255, 0, 0, 0.6),
+    0 0 45px rgba(255, 0, 0, 0.4),
+    inset 0 0 15px rgba(255, 0, 0, 0.15);
+}
+
+/* Border Animations */
+
+/* Animated border that draws on hover */
+.border-draw {
+  position: relative;
+  border: 1px solid transparent;
+  transition: border-color var(--transition-base) var(--ease-out);
+}
+
+.border-draw::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 2px solid var(--color-primary);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: 
+    opacity var(--transition-base) var(--ease-out),
+    transform var(--transition-base) var(--ease-out);
+  pointer-events: none;
+}
+
+.border-draw:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Glowing border animation */
+.border-glow {
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  transition: 
+    border-color var(--transition-base) var(--ease-out),
+    box-shadow var(--transition-base) var(--ease-out);
+}
+
+.border-glow:hover {
+  border-color: var(--color-primary);
+  box-shadow:
+    0 0 10px var(--color-primary-glow-soft),
+    0 0 20px var(--color-primary-glow-soft),
+    inset 0 0 10px rgba(255, 0, 0, 0.1);
+}
+
+/* Animated border pulse */
+@keyframes border-pulse {
+  0%, 100% {
+    border-color: rgba(255, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(255, 0, 0, 0.2);
+  }
+  50% {
+    border-color: var(--color-primary);
+    box-shadow: 
+      0 0 15px var(--color-primary-glow-soft),
+      0 0 25px var(--color-primary-glow-soft);
+  }
+}
+
+.border-pulse {
+  border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.border-pulse:hover {
+  animation: border-pulse 1.5s ease-in-out infinite;
+}
+
+/* Scanning border effect */
+@keyframes border-scan {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.border-scan {
+  position: relative;
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(var(--color-bg), var(--color-bg)) padding-box,
+    linear-gradient(90deg, 
+      transparent 0%, 
+      var(--color-primary) 50%, 
+      transparent 100%) border-box;
+  background-size: 200% 200%;
+  transition: background-position var(--transition-slow) var(--ease-out);
+}
+
+.border-scan:hover {
+  animation: border-scan 1.5s linear infinite;
+}
+
+/* Corner accent borders */
+.border-corners {
+  position: relative;
+  border: 1px solid rgba(255, 0, 0, 0.2);
+  transition: border-color var(--transition-base) var(--ease-out);
+}
+
+.border-corners::before,
+.border-corners::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--color-primary);
+  opacity: 0;
+  transition: opacity var(--transition-base) var(--ease-out);
+}
+
+.border-corners::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.border-corners::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+.border-corners:hover {
+  border-color: rgba(255, 0, 0, 0.5);
+}
+
+.border-corners:hover::before,
+.border-corners:hover::after {
+  opacity: 1;
+}
+
+/* Underline animation for links */
+.hover-underline {
+  position: relative;
+  text-decoration: none;
+  transition: color var(--transition-base) var(--ease-out);
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  box-shadow: 0 0 10px var(--color-primary-glow-soft);
+  transition: width var(--transition-base) var(--ease-out);
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* ============================================
+   Keyframe Animations
+   ============================================ */
+
+/* Neon Flicker Effect - Simulates flickering neon lights */
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 
+      0 0 10px var(--color-primary-glow-soft),
+      0 0 20px var(--color-primary-glow-soft),
+      0 0 30px var(--color-primary-glow),
+      0 0 40px var(--color-primary);
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    text-shadow: 
+      0 0 5px var(--color-primary-glow-subtle),
+      0 0 10px var(--color-primary-glow-subtle);
+    opacity: 0.8;
+  }
+  22% {
+    text-shadow: none;
+    opacity: 0.6;
+  }
+}
+
+.neon-flicker {
+  animation: neon-flicker 3s infinite;
+}
+
+/* Pulse Animation - Smooth pulsing glow for elements */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 10px var(--color-primary-glow-soft),
+      0 0 20px var(--color-primary-glow-soft),
+      0 0 30px rgba(255, 0, 0, 0.5),
+      inset 0 0 10px rgba(255, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 20px var(--color-primary-glow),
+      0 0 30px var(--color-primary-glow),
+      0 0 40px var(--color-primary),
+      0 0 50px rgba(255, 0, 0, 0.7),
+      inset 0 0 15px rgba(255, 0, 0, 0.15);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Pulse Animation for Text - Smooth pulsing glow for text elements */
+@keyframes pulse-glow-text {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px var(--color-primary-glow-soft),
+      0 0 20px var(--color-primary-glow-soft),
+      0 0 30px var(--color-primary-glow);
+  }
+  50% {
+    text-shadow: 
+      0 0 15px var(--color-primary-glow),
+      0 0 25px var(--color-primary-glow),
+      0 0 35px var(--color-primary),
+      0 0 45px var(--color-primary);
+  }
+}
+
+.pulse-glow-text {
+  animation: pulse-glow-text 2s ease-in-out infinite;
+}
+
+/* Fade-In Animations - Content reveal animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.fade-in-down {
+  animation: fade-in-down 0.8s ease-out forwards;
+}
+
+/* Slide-In Animations - Directional slide animations */
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-left {
+  animation: slide-in-left 0.8s ease-out forwards;
+}
+
+.slide-in-right {
+  animation: slide-in-right 0.8s ease-out forwards;
+}
+
+.slide-in-up {
+  animation: slide-in-up 0.8s ease-out forwards;
+}
+
+.slide-in-down {
+  animation: slide-in-down 0.8s ease-out forwards;
+}
+
+/* Glitch Effect - Cyberpunk text distortion effect */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+    text-shadow: 
+      0 0 10px var(--color-primary-glow-soft),
+      0 0 20px var(--color-primary-glow-soft),
+      0 0 30px var(--color-primary-glow);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+    text-shadow: 
+      2px 0 0 #ff0000,
+      -2px 0 0 #00ffff,
+      0 0 20px var(--color-primary-glow);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+    text-shadow: 
+      -2px 0 0 #ff0000,
+      2px 0 0 #00ffff,
+      0 0 20px var(--color-primary-glow);
+  }
+  60% {
+    transform: translate(2px, 2px);
+    text-shadow: 
+      2px 0 0 #00ffff,
+      -2px 0 0 #ff0000,
+      0 0 20px var(--color-primary-glow);
+  }
+  80% {
+    transform: translate(2px, -2px);
+    text-shadow: 
+      -2px 0 0 #00ffff,
+      2px 0 0 #ff0000,
+      0 0 20px var(--color-primary-glow);
+  }
+  100% {
+    transform: translate(0);
+    text-shadow: 
+      0 0 10px var(--color-primary-glow-soft),
+      0 0 20px var(--color-primary-glow-soft),
+      0 0 30px var(--color-primary-glow);
+  }
+}
+
+@keyframes glitch-intense {
+  0% {
+    transform: translate(0) skew(0deg);
+    text-shadow: 
+      0 0 10px var(--color-primary-glow-soft),
+      0 0 20px var(--color-primary-glow-soft),
+      0 0 30px var(--color-primary-glow);
+  }
+  10% {
+    transform: translate(-5px, 2px) skew(2deg);
+    text-shadow: 
+      3px 0 0 #ff0000,
+      -3px 0 0 #00ffff,
+      0 0 25px var(--color-primary-glow);
+  }
+  20% {
+    transform: translate(3px, -3px) skew(-2deg);
+    text-shadow: 
+      -3px 0 0 #ff0000,
+      3px 0 0 #00ffff,
+      0 0 25px var(--color-primary-glow);
+  }
+  30% {
+    transform: translate(-2px, 3px) skew(1deg);
+    text-shadow: 
+      2px 0 0 #00ffff,
+      -2px 0 0 #ff0000,
+      0 0 25px var(--color-primary-glow);
+  }
+  40% {
+    transform: translate(4px, -2px) skew(-1deg);
+    text-shadow: 
+      -4px 0 0 #00ffff,
+      4px 0 0 #ff0000,
+      0 0 25px var(--color-primary-glow);
+  }
+  50% {
+    transform: translate(-3px, -3px) skew(2deg);
+    text-shadow: 
+      3px 0 0 #ff0000,
+      -3px 0 0 #00ffff,
+      0 0 30px var(--color-primary-glow);
+  }
+  60% {
+    transform: translate(2px, 4px) skew(-2deg);
+    text-shadow: 
+      -2px 0 0 #ff0000,
+      2px 0 0 #00ffff,
+      0 0 25px var(--color-primary-glow);
+  }
+  70% {
+    transform: translate(-4px, -2px) skew(1deg);
+    text-shadow: 
+      4px 0 0 #00ffff,
+      -4px 0 0 #ff0000,
+      0 0 25px var(--color-primary-glow);
+  }
+  80% {
+    transform: translate(3px, 3px) skew(-1deg);
+    text-shadow: 
+      -3px 0 0 #00ffff,
+      3px 0 0 #ff0000,
+      0 0 25px var(--color-primary-glow);
+  }
+  90% {
+    transform: translate(-2px, 2px) skew(2deg);
+    text-shadow: 
+      2px 0 0 #ff0000,
+      -2px 0 0 #00ffff,
+      0 0 25px var(--color-primary-glow);
+  }
+  100% {
+    transform: translate(0) skew(0deg);
+    text-shadow: 
+      0 0 10px var(--color-primary-glow-soft),
+      0 0 20px var(--color-primary-glow-soft),
+      0 0 30px var(--color-primary-glow);
+  }
+}
+
+.glitch {
+  animation: glitch 1s infinite;
+}
+
+.glitch-intense {
+  animation: glitch-intense 0.8s infinite;
+}
+
+/* Glitch effect that triggers on hover */
+.glitch-hover:hover {
+  animation: glitch 0.5s ease-in-out;
+}
+
+.glitch-intense-hover:hover {
+  animation: glitch-intense 0.5s ease-in-out;
+}
+
+/* ============================================
+   Animation Delays and Stagger Effects
+   ============================================ */
+
+/* Stagger animation delays for sequential reveals */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+.delay-7 { animation-delay: 0.7s; }
+.delay-8 { animation-delay: 0.8s; }
+
+/* ============================================
+   Animation Duration Utilities
+   ============================================ */
+
+.duration-fast { animation-duration: 0.4s; }
+.duration-normal { animation-duration: 0.8s; }
+.duration-slow { animation-duration: 1.2s; }
+.duration-slower { animation-duration: 1.6s; }
+
+/* ============================================
+   Reduced Motion Support
+   ============================================ */
+
+/* Respect user's motion preferences for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  /* Disable glitch and flicker effects entirely for reduced motion */
+  .glitch,
+  .glitch-intense,
+  .glitch-hover:hover,
+  .glitch-intense-hover:hover,
+  .neon-flicker {
+    animation: none !important;
+  }
+  
+  /* Keep pulse animations but make them static */
+  .pulse-glow,
+  .pulse-glow-text {
+    animation: none !important;
+  }
+}
+
+/* ============================================
+   Downloads Section Animations
+   ============================================ */
+
+/* Download card entrance animation - more subtle */
+@keyframes downloadCardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.download-card {
+  animation: downloadCardEntrance 0.4s var(--ease-out) both;
+}
+
+/* Stagger animation for multiple download cards */
+.download-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.download-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.download-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.download-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.download-card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.download-card:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+/* Download icon subtle pulse */
+.download-icon {
+  animation: iconPulseSubtle 4s ease-in-out infinite;
+}
+
+@keyframes iconPulseSubtle {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 8px var(--color-primary-glow-soft));
+  }
+  50% {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 12px var(--color-primary-glow-soft));
+  }
+}
+
+/* Download button hover animation */
+.download-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.download-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 0, 0, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+.download-button:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+.download-button:active {
+  transform: scale(0.97);
+}
+
+/* Download icon button subtle bounce */
+@keyframes downloadBounceSubtle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.download-button:hover .download-icon-btn {
+  animation: downloadBounceSubtle 0.5s ease-in-out infinite;
+}
+
+/* File type badge subtle pulse */
+.file-type {
+  animation: badgePulseSubtle 3s ease-in-out infinite;
+}
+
+@keyframes badgePulseSubtle {
+  0%, 100% {
+    box-shadow: 0 0 3px var(--color-primary-glow-subtle);
+  }
+  50% {
+    box-shadow: 0 0 6px var(--color-primary-glow-soft);
+  }
+}
+
+/* Downloads notice subtle glow */
+.downloads-notice {
+  animation: noticeGlowSubtle 4s ease-in-out infinite;
+}
+
+@keyframes noticeGlowSubtle {
+  0%, 100% {
+    box-shadow: 0 0 15px var(--color-primary-glow-soft);
+    border-color: var(--color-primary);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--color-primary-glow-soft);
+    border-color: var(--color-primary-light);
+  }
+}
+
+/* Fade out animation for removed downloads */
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.fade-out {
+  animation: fadeOut 0.3s var(--ease-in) forwards;
+}
+
+/* No downloads message animation */
+.no-downloads {
+  text-align: center;
+  padding: var(--spacing-lg);
+  color: var(--color-text-tertiary);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  animation: fadeIn 0.5s var(--ease-out);
+}
+
+/* Reduced motion support for downloads */
+@media (prefers-reduced-motion: reduce) {
+  .download-card {
+    animation: none;
+  }
+  
+  .download-icon {
+    animation: none;
+  }
+  
+  .file-type {
+    animation: none;
+  }
+  
+  .downloads-notice {
+    animation: none;
+  }
+  
+  .download-button:hover .download-icon-btn {
+    animation: none;
+  }
+}
